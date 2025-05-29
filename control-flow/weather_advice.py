@@ -14,7 +14,7 @@ def weather_recommendation():
     elif weather == "cold":
         print("Make sure to wear a warm coat and a scarf.")
     else:
-        print(f"Sorry, I don't have recommendations for '{weather}' weather. Please choose from: sunny/rainy/cold")
+        print("Sorry, I don't have recommendations for this weather.")
 
 if __name__ == "__main__":
     weather_recommendation()

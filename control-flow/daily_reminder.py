@@ -1,52 +1,66 @@
 # daily_reminder.py
 
-def generate_reminder():
+def daily_reminder():
     """
-    Génère un rappel personnalisé pour une tâche unique avec une structure de 
-    sortie conforme aux exigences de vérification.
+    Prompts the user for a single task, its priority, and time sensitivity,
+    then provides a customized reminder.
     """
-    # Saisie des informations sur la tâche
-    task = input("Enter your task: ")
-    
-    # Validation de la priorité avec boucle
+    print("Let's set a daily reminder for your priority task!")
+
+    # Prompt for task description
+    task_description = input("Enter your task: ")
+
+    # Prompt for priority with input validation using a loop
     while True:
         priority = input("Priority (high/medium/low): ").lower()
         if priority in ["high", "medium", "low"]:
             break
-        print("Invalid input. Please enter high, medium, or low.")
-    
-    # Validation du caractère temporel
+        else:
+            print("Invalid priority. Please enter 'high', 'medium', or 'low'.")
+
+    # Prompt for time-bound status with input validation using a loop
     while True:
         time_bound = input("Is it time-bound? (yes/no): ").lower()
         if time_bound in ["yes", "no"]:
             break
-        print("Invalid input. Please enter yes or no.")
-    
-    # Construction du message de base avec match-case
+        else:
+            print("Invalid input. Please enter 'yes' or 'no'.")
+
+    # Initialize the base reminder message
+    reminder_message = ""
+
+    # Use match-case to determine the base message based on priority
+    # This feature is available in Python 3.10 and later.
     match priority:
         case "high":
-            base_msg = f"'{task}' is a high priority task"
+            reminder_message = f"Reminder: '{task_description}' is a high priority task"
         case "medium":
-            base_msg = f"'{task}' is a medium priority task"
+            reminder_message = f"Note: '{task_description}' is a medium priority task"
         case "low":
-            base_msg = f"'{task}' is a low priority task"
-    
-    # Génération du rappel final avec impression directe
+            reminder_message = f"Note: '{task_description}' is a low priority task"
+        # The 'else' or '_' case is not strictly needed here due to input validation loops
+        # ensuring 'priority' is always one of 'high', 'medium', 'low'.
+
+    # Use an if statement to modify the reminder for time-bound tasks
     if time_bound == "yes":
-        print(f"\nReminder: {base_msg} that requires immediate attention today!")
+        reminder_message += " that requires immediate attention today!"
     else:
-        # Messages spécifiques pour chaque priorité (non temporel)
-        match priority:
-            case "high":
-                print(f"\nNote: {base_msg}. Complete it soon even without deadline.")
-            case "medium":
-                print(f"\nNote: {base_msg}. Schedule it for this week.")
-            case "low":
-                print(f"\nNote: {base_msg}. Consider completing it when you have free time.")
-    
-    # Message final
+        # Add specific non-time-bound advice based on priority
+        if priority == "low":
+            reminder_message += ". Consider completing it when you have free time."
+        elif priority == "medium":
+            reminder_message += ". Aim to complete it within the day."
+        else: # High priority, but not time-bound (still important)
+            reminder_message += ". Ensure it gets done today."
+
+
+    # Print the final customized reminder
+    print("\n" + reminder_message)
+
+    # Project completion message
     print("\nWell done on completing this project! Let the world hear about this milestone achieved.")
     print("🚀 Click here to tweet! 🚀")
 
+# Ensure the function runs when the script is executed directly
 if __name__ == "__main__":
-    generate_reminder()
+    daily_reminder()

@@ -2,8 +2,8 @@
 
 def generate_reminder():
     """
-    Génère un rappel personnalisé pour une tâche unique en fonction de sa priorité
-    et de son caractère temporel, en utilisant des structures de contrôle avancées.
+    Génère un rappel personnalisé pour une tâche unique avec une structure de 
+    sortie conforme aux exigences de vérification.
     """
     # Saisie des informations sur la tâche
     task = input("Enter your task: ")
@@ -22,7 +22,7 @@ def generate_reminder():
             break
         print("Invalid input. Please enter yes or no.")
     
-    # Traitement avec match-case et conditions
+    # Construction du message de base avec match-case
     match priority:
         case "high":
             base_msg = f"'{task}' is a high priority task"
@@ -31,20 +31,20 @@ def generate_reminder():
         case "low":
             base_msg = f"'{task}' is a low priority task"
     
-    # Ajout de la sensibilité temporelle
+    # Génération du rappel final avec impression directe
     if time_bound == "yes":
-        reminder = f"Reminder: {base_msg} that requires immediate attention today!"
+        print(f"\nReminder: {base_msg} that requires immediate attention today!")
     else:
+        # Messages spécifiques pour chaque priorité (non temporel)
         match priority:
             case "high":
-                reminder = f"Note: {base_msg}. Complete it soon even without deadline."
+                print(f"\nNote: {base_msg}. Complete it soon even without deadline.")
             case "medium":
-                reminder = f"Note: {base_msg}. Schedule it for this week."
+                print(f"\nNote: {base_msg}. Schedule it for this week.")
             case "low":
-                reminder = f"Note: {base_msg}. Consider completing it when you have free time."
+                print(f"\nNote: {base_msg}. Consider completing it when you have free time.")
     
-    # Affichage du résultat
-    print("\n" + reminder)
+    # Message final
     print("\nWell done on completing this project! Let the world hear about this milestone achieved.")
     print("🚀 Click here to tweet! 🚀")
 

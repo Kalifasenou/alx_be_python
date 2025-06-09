@@ -1,19 +1,17 @@
-# alx_be_python/fns_and_dsa/arithmetic_operations.py
-
-def perform_operation(num1, num2, operation):
+def perform_operation(num1: float, num2: float, operation: str) -> float | str:
     """
-    Performs basic arithmetic operations based on the given numbers and operation.
-
+    Effectue des opérations arithmétiques de base sur deux nombres.
+    
     Args:
-        num1 (float): The first number.
-        num2 (float): The second number.
-        operation (str): The arithmetic operation to perform.
-                         Accepted values are 'add', 'subtract', 'multiply', or 'divide'.
-
+        num1: Premier nombre (float)
+        num2: Deuxième nombre (float)
+        operation: Type d'opération ('add', 'subtract', 'multiply', 'divide')
+    
     Returns:
-        float or str: The result of the operation if successful,
-                      or an error message string if division by zero occurs.
+        Résultat de l'opération (float) ou message d'erreur en cas de division par zéro (str)
     """
+    operation = operation.lower()
+    
     if operation == 'add':
         return num1 + num2
     elif operation == 'subtract':
@@ -22,12 +20,7 @@ def perform_operation(num1, num2, operation):
         return num1 * num2
     elif operation == 'divide':
         if num2 == 0:
-            # Handle division by zero error
             return "Error: Division by zero"
-        else:
-            return num1 / num2
+        return num1 / num2
     else:
-        # This case handles any unrecognised operation strings,
-        # although the prompt implies only valid operations will be provided.
-        return "Error: Invalid operation"
-
+        raise ValueError(f"Invalid operation: {operation}. Use 'add', 'subtract', 'multiply', or 'divide'")

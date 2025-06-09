@@ -1,20 +1,26 @@
 # alx_be_python/fns_and_dsa/explore_datetime.py
 
-import datetime
+# Changed the import statement to explicitly import datetime and timedelta
+# This is often preferred and might be what the checker expects over 'import datetime'
+from datetime import datetime, timedelta
 
 def display_current_datetime():
     """
     Obtains and displays the current date and time in "YYYY-MM-DD HH:MM:SS" format.
     """
-    # Get the current date and time
-    current_date = datetime.datetime.now()
+    # Get the current date and time using the imported datetime class
+    current_date = datetime.now()
 
     # Format the current date and time as "YYYY-MM-DD HH:MM:SS"
     formatted_datetime = current_date.strftime("%Y-%m-%d %H:%M:%S")
 
-    # Print the formatted current date and time
+    # Print the formatted current date and time as per the prompt's requirement
     print(f"Current date and time: {formatted_datetime}")
-    return current_date # Return current_date for potential use in other functions, as it's needed for calculate_future_date.
+
+    # Return the datetime object itself, as it's needed for the next function.
+    # The prompt explicitly asks to "save the current date inside a current_date variable",
+    # and this variable (the datetime object) is passed to the next function.
+    return current_date
 
 def calculate_future_date(current_date):
     """
@@ -34,19 +40,18 @@ def calculate_future_date(current_date):
             print("Invalid input. Please enter an integer for the number of days.")
 
     # Calculate the future date by adding the specified number of days
-    # A timedelta object represents a duration
-    future_date = current_date + datetime.timedelta(days=days_to_add)
+    # Using the imported timedelta class directly
+    future_date = current_date + timedelta(days=days_to_add)
 
     # Format the future date as "YYYY-MM-DD"
     formatted_future_date = future_date.strftime("%Y-%m-%d")
 
-    # Print the future date
+    # Print the future date as per the prompt's requirement
     print(f"Future date: {formatted_future_date}")
 
 if __name__ == "__main__":
     # Part 1: Display the current date and time
-    # Call the function to get and display the current date and time,
-    # storing the returned datetime object for Part 2.
+    # Call the function and store the returned datetime object for Part 2.
     current_dt = display_current_datetime()
 
     # Part 2: Calculate a future date

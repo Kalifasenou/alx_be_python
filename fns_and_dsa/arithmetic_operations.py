@@ -1,6 +1,6 @@
 # alx_be_python/fns_and_dsa/arithmetic_operations.py
 
-def perform_operation(num1: float, num2: float, operation: str):
+def perform_operation(num1, num2, operation):
     """
     Performs basic arithmetic operations based on the given numbers and operation.
 
@@ -8,7 +8,7 @@ def perform_operation(num1: float, num2: float, operation: str):
         num1 (float): The first number.
         num2 (float): The second number.
         operation (str): The arithmetic operation to perform.
-                         Accepted values are 'add', 'subtract', 'multiply', 'divide'.
+                         Accepted values are 'add', 'subtract', 'multiply', or 'divide'.
 
     Returns:
         float or str: The result of the operation if successful,
@@ -30,3 +30,4 @@ def perform_operation(num1: float, num2: float, operation: str):
         # This case handles any unrecognised operation strings,
         # although the prompt implies only valid operations will be provided.
         return "Error: Invalid operation"
+

@@ -1,14 +1,14 @@
-def perform_operation(num1: float, num2: float, operation: str) -> float | str:
+def perform_operation(num1, num2, operation):
     """
-    Effectue des opérations arithmétiques de base sur deux nombres.
+    Effectue des opérations arithmétiques de base
     
     Args:
-        num1: Premier nombre (float)
-        num2: Deuxième nombre (float)
-        operation: Type d'opération ('add', 'subtract', 'multiply', 'divide')
+        num1: Premier nombre
+        num2: Deuxième nombre
+        operation: Opération à effectuer (add, subtract, multiply, divide)
     
     Returns:
-        Résultat de l'opération (float) ou message d'erreur en cas de division par zéro (str)
+        Résultat ou message d'erreur
     """
     operation = operation.lower()
     
@@ -23,4 +23,4 @@ def perform_operation(num1: float, num2: float, operation: str) -> float | str:
             return "Error: Division by zero"
         return num1 / num2
     else:
-        raise ValueError(f"Invalid operation: {operation}. Use 'add', 'subtract', 'multiply', or 'divide'")
+        raise ValueError(f"Invalid operation: {operation}")
